@@ -20,7 +20,7 @@ def connect(ssid,key,timeout):
 
 def accessP():  
     ap = network.WLAN(network.WLAN.IF_AP) 
-    ap.config(ssid='ESP_AP')
+    ap.config(ssid='Everymote-setup')
     ap.config(max_clients=10)
     ap.active(True) 
     print('network config:', ap.ipconfig('addr4'))
