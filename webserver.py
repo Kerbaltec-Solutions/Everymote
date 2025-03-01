@@ -8,8 +8,10 @@ import ir_read
 from machine import Pin, PWM
 import time
 import hw_buttons
-import update
 import ujson
+import update
+
+REPO_URL = "https://raw.githubusercontent.com/Kerbaltec-Solutions/Everymote/refs/heads/main/"
 
 import gc
 gc.collect()
@@ -140,9 +142,9 @@ def accept():
                 web_page(webfiles.build_buttonRM_form(remote),conn,"text/html")
             elif page=="UPDATE":
                 web_page(webfiles.update_page,conn,"text/html")
+                update.update(led)
             else:
                 web_page(webfiles.build_buttons(page),conn,"text/html")
-                update.update(led)
         elif 'button=' in request:
             button = tools.get_between(request,'button=','&')
             remote = tools.get_between(request,'remote=','&')

@@ -5,7 +5,9 @@ import time
 REPO_URL = "https://raw.githubusercontent.com/Kerbaltec-Solutions/Everymote/refs/heads/main/"
 
 def update(led):
+    print("UPDATING")
     response = requests.get(REPO_URL+"files.md")
+    print(response)
     if response.status_code == 200:
         for file in response.text.split(","):
             print(file)
