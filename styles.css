@@ -1,0 +1,30 @@
+/* styles.css */
+* {
+    margin: 1%;
+    padding: 1%;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+h1 {
+    margin: 15px;
+    color: #446;
+    text-align: center;
+    font-size: 60px;
+}
+.pile {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+input {
+    font-size: 30px;
+    flex: 1 1 100px;
+    margin: 10px;
+    align-items: center;
+    justify-content: center;
+    line-height: 50px; 
+}
