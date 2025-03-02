@@ -167,9 +167,6 @@ def accept():
             
             machine.freq(80000000)
 
-    elif 'GET /styles.css' in request:
-        web_page(webfiles.css,conn,"text/css")
-
     elif(configure):
         web_page(webfiles.wifi_form,conn,"text/html")
 

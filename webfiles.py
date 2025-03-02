@@ -1,8 +1,10 @@
-wifi_form = """<!DOCTYPE html>
+STYLESHEET = "https://raw.githubusercontent.com/Kerbaltec-Solutions/Everymote/refs/heads/main/styles.css"
+
+wifi_form = f"""<!DOCTYPE html>
 <html>
     <head> 
         <title>Everymote</title> 
-        <link rel="stylesheet" href="/styles.css">
+        <link rel="stylesheet" href="{STYLESHEET}">
     </head>
     <body>
         <h1>Everymote</h1>
@@ -14,44 +16,13 @@ wifi_form = """<!DOCTYPE html>
     </body>
 </html>
 """
-css = """/* styles.css */
-* {
-    margin: 1%;
-    padding: 1%;
-    box-sizing: border-box;
-}
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    color: #333;
-}
-h1 {
-    margin: 15px;
-    color: #446;
-    text-align: center;
-    font-size: 60px;
-}
-.pile {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-input {
-    font-size: 30px;
-    flex: 1 1 100px;
-    margin: 10px;
-    align-items: center;
-    justify-content: center;
-    line-height: 50px; 
-}
-"""
 def build_remotes():
     import buttons
-    page = """<!DOCTYPE html>
+    page = f"""<!DOCTYPE html>
 <html>
     <head> 
         <title>Everymote</title> 
-        <link rel="stylesheet" href="/styles.css">
+        <link rel="stylesheet" href="{STYLESHEET}">
     </head>
     <body>
         <h1>Your Remotes</h1>
@@ -76,7 +47,7 @@ def build_buttons(remote):
 <html>
     <head> 
         <title>Everymote</title> 
-        <link rel="stylesheet" href="/styles.css">
+        <link rel="stylesheet" href="{STYLESHEET}">
     </head>
     <body>
         <h1>{remote}</h1>
@@ -94,11 +65,11 @@ def build_buttons(remote):
 </html>
 """
     return page
-remote_form = """<!DOCTYPE html>
+remote_form = f"""<!DOCTYPE html>
 <html>
     <head> 
         <title>Everymote</title> 
-        <link rel="stylesheet" href="/styles.css">
+        <link rel="stylesheet" href="{STYLESHEET}">
     </head>
     <body>
         <h1>Add new Remote</h1>
@@ -111,11 +82,11 @@ remote_form = """<!DOCTYPE html>
 """
 def build_remoteRM_form():
     import buttons
-    page = """<!DOCTYPE html>
+    page = f"""<!DOCTYPE html>
 <html>
     <head> 
         <title>Everymote</title> 
-        <link rel="stylesheet" href="/styles.css">
+        <link rel="stylesheet" href="{STYLESHEET}">
     </head>
     <body>
         <h1>Remove Remote</h1>
@@ -137,7 +108,7 @@ def build_button_form(remote):
 <html>
     <head> 
         <title>Everymote</title> 
-        <link rel="stylesheet" href="/styles.css">
+        <link rel="stylesheet" href="{STYLESHEET}">
     </head>
     <body>
         <h1>Change buttons of {remote}</h1>
@@ -167,7 +138,7 @@ def build_buttonRM_form(remote):
 <html>
     <head> 
         <title>Everymote</title> 
-        <link rel="stylesheet" href="/styles.css">
+        <link rel="stylesheet" href="{STYLESHEET}">
     </head>
     <body>
         <h1>Remove button from {remote}</h1>
@@ -189,6 +160,7 @@ def build_redirect(url):
 <html>
     <head> 
         <title>Everymote</title> 
+        <link rel="stylesheet" href="{STYLESHEET}">
         <meta http-equiv="refresh" content="0; url={url}" />
     </head>
     <body>
@@ -200,10 +172,12 @@ def build_redirect(url):
 
 """
     return(page)
-update_page="""<!DOCTYPE html>
+update_page=f"""<!DOCTYPE html>
 <html>
     <head> 
         <title>Everymote</title> 
+        <link rel="stylesheet" href="{STYLESHEET}">
+        <meta http-equiv="refresh" content="0; url=/" />
     </head>
     <body>
         <h1>UPDATING... Device will restart when LED lights up</h1>
