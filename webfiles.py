@@ -204,7 +204,6 @@ update_page="""<!DOCTYPE html>
 <html>
     <head> 
         <title>Everymote</title> 
-        <link rel="stylesheet" href="/styles.css">
     </head>
     <body>
         <h1>UPDATING... Device will restart when LED lights up</h1>
