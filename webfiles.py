@@ -207,7 +207,7 @@ update_page="""<!DOCTYPE html>
         <link rel="stylesheet" href="/styles.css">
     </head>
     <body>
-        <h1>UPDATING... Restart device when LED lights up</h1>
+        <h1>UPDATING... Device will restart when LED lights up</h1>
     </body>
 </html>
 """
