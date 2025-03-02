@@ -1,4 +1,4 @@
-STYLESHEET = "https://raw.githubusercontent.com/Kerbaltec-Solutions/Everymote/refs/heads/main/styles.css"
+STYLESHEET = "https://bjoern-schnabel.de/Everymote/styles.css"
 
 wifi_form = f"""<!DOCTYPE html>
 <html>
