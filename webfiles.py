@@ -59,6 +59,11 @@ def build_buttons(remote):
 
 <body>
     <h1>{remote}</h1>
+    <form action="/remotes" method="get">
+        <div class="pile">
+            <input type="submit" name="page" value="HOME"><input type="submit" name="page" value="EDIT or ADD button"><input type="submit" name="page" value="REMOVE button">
+        </div>
+    </form>
     <div id="grid" class="grid"></div>
     <script>
         const grid = document.getElementById("grid");

@@ -121,10 +121,10 @@ def answer(conn,request):
                 web_page(webfiles.build_remoteRM_form(),conn,"text/html")
             elif page=="HOME":
                 web_page(webfiles.build_redirect(f'/'),conn,"text/html")
-            elif page=="EDIT or ADD buttons":
+            elif page=="EDIT or ADD button":
                 remote = tools.get_between(request,'remote=','&')
                 web_page(webfiles.build_button_form(remote),conn,"text/html")
-            elif page=="REMOVE buttons":
+            elif page=="REMOVE button":
                 remote = tools.get_between(request,'remote=','&')
                 web_page(webfiles.build_buttonRM_form(remote),conn,"text/html")
             elif page=="UPDATE":
