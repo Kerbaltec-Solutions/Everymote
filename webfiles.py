@@ -83,6 +83,18 @@ def build_buttons(remote):
                 e.dataTransfer.setData("text", e.target.id);
                 e.dataTransfer.effectAllowed = "move";
             }});
+            btn.addEventListener("touchstart", (e) => {{
+                e.preventDefault();
+                const touch = e.touches[0];
+                const dragEvent = new DragEvent("dragstart", {{
+                    dataTransfer: new DataTransfer(),
+                    bubbles: true,
+                    cancelable: true,
+                    clientX: touch.clientX,
+                    clientY: touch.clientY
+                }});
+                btn.dispatchEvent(dragEvent);
+            }});
             btn.addEventListener("click", () => {{
                 fetch(`/remotes?remote={remote}&button=${{label}}`)
             }});
