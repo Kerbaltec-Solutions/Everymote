@@ -44,7 +44,7 @@ def build_remotes():
 def build_buttons(remote):
     import buttons
 
-    button_list=[button[0] for button in buttons.get_buttons(remote)]
+    button_list=[f"{button[0]}," for button in buttons.get_buttons(remote)]
     page  = f"""<!DOCTYPE html>
 <html lang="en">
 
@@ -60,7 +60,7 @@ def build_buttons(remote):
     <div id="grid" class="grid"></div>
     <script>
         const grid = document.getElementById("grid");
-        const predefinedButtons = [{button_list}];
+        const predefinedButtons = [{button_list[:-1]}];
 
         function saveGridState() {{
             const state = {{}};
