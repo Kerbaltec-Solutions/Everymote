@@ -60,6 +60,7 @@ def build_buttons(remote):
 <body>
     <h1>{remote}</h1>
     <form action="/remotes" method="get">
+        <input type="hidden" name="remote" value="{remote}">
         <div class="pile">
             <input type="submit" name="page" value="HOME"><input type="submit" name="page" value="EDIT or ADD button"><input type="submit" name="page" value="REMOVE button">
         </div>
@@ -122,7 +123,7 @@ def build_buttons(remote):
             }});
         }}
 
-        for (let i = 0; i < 60; i++) {{
+        for (let i = 0; i < 36; i++) {{
             const cell = document.createElement("div");
             cell.dataset.index = i;
             cell.addEventListener("dragover", (e) => e.preventDefault());
