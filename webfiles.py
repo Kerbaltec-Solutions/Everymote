@@ -84,7 +84,7 @@ def build_buttons(remote):
                 e.dataTransfer.effectAllowed = "move";
             }});
             btn.addEventListener("click", () => {{
-                fetch(`/remotes?remote="{remote}"&button=${{label}}`)
+                fetch(`/remotes?remote={remote}&button=${{label}}`)
             }});
             return btn;
         }}
