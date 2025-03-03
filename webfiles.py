@@ -44,7 +44,9 @@ def build_remotes():
 def build_buttons(remote):
     import buttons
 
-    button_list=[f"{button[0]}," for button in buttons.get_buttons(remote)]
+    button_list = ''
+    for button in buttons.get_buttons(remote):
+        button_list+=f'"{button[0]}",'
     page  = f"""<!DOCTYPE html>
 <html lang="en">
 
