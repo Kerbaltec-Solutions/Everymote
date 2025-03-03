@@ -53,8 +53,8 @@ def build_buttons(remote):
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Button Grid</title>
-    <link rel="stylesheet" href="./styles.css">
+    <title>Everymote</title>
+    <link rel="stylesheet" href="{STYLESHEET}">
 </head>
 
 <body>
