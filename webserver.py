@@ -53,20 +53,7 @@ except:
     machine.reset()
 s.listen(5)
 
-def accept():
-    conn, addr = s.accept()
-    print('Got a connection from %s' % str(addr))
-    request = conn.recv(1024)
-    request = str(request)
-    
-    print('Content = %s' % request)
-
-    request = request.split(" HTTP")[0]
-
-    request = tools.replace(request)
-
-    
-    
+def answer(conn,request):
     if 'GET /connect' in request:
         ssid = tools.get_between(request,'ssid=','&')
         password = tools.get_between(request,'password=','&')
@@ -172,3 +159,20 @@ def accept():
 
     else:
         web_page(webfiles.build_remotes(),conn,"text/html")
+
+def accept():
+    try:
+        conn, addr = s.accept()
+        print('Got a connection from %s' % str(addr))
+        request = conn.recv(1024)
+        request = str(request)
+        
+        print('Content = %s' % request)
+
+        request = request.split(" HTTP")[0]
+
+        request = tools.replace(request)
+
+        answer(conn, request)
+    except:
+        pass
