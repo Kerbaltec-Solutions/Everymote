@@ -141,7 +141,9 @@ def answer(conn,request):
             machine.freq(240000000)
 
             for seq in buttons.get_button(remote,button):
-                ir_read.send(seq, ir_led,led)
+                led.on()
+                ir_read.send(seq, ir_led)
+                led.off()
             
             machine.freq(80000000)
 
