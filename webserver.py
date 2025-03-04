@@ -169,5 +169,5 @@ def accept():
 
         answer(conn, request)
         print("Ready...")
-    except:
-        pass
+    except Exception as e: 
+        print(e)

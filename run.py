@@ -1,6 +1,6 @@
 import machine
 
-machine.freq(80000000)
+machine.freq(240000000)
 
 import webserver
 

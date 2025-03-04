@@ -19,7 +19,6 @@ pin.irq(trigger=Pin.IRQ_RISING | Pin.IRQ_FALLING, handler=ir_callback)
 
 
 def listen():
-    machine.freq(240000000)
     global timestamps
     reset()
     last_l = 0
@@ -27,7 +26,6 @@ def listen():
     while len(timestamps)>last_l:
         last_l=len(timestamps)
         time.sleep_ms(500)
-    machine.freq(80000000)
     return read()
     
 def continuous(p):
@@ -66,13 +64,10 @@ def send(seq, ir_led):
     seq = [500]+seq
     v=0
 
-    machine.freq(240000000)
-    
     for t in seq:
         ir_led.duty(v)
         v=-(v-512)
         time.sleep_us(t+calib_fac)
     ir_led.duty(0)
 
-    machine.freq(80000000)
     time.sleep_ms(500)
