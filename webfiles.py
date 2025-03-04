@@ -1,4 +1,5 @@
 STYLESHEET = "https://bjoern-schnabel.de/Everymote/styles.css"
+DRAGDROPTOUCH = "https://bjoern-schnabel.de/Everymote/DragDropTouch.js"
 
 wifi_form = f"""<!DOCTYPE html>
 <html>
@@ -66,6 +67,7 @@ def build_buttons(remote):
         </div>
     </form>
     <div id="grid" class="grid"></div>
+    <script src="{DRAGDROPTOUCH}"></script>
     <script>
         const grid = document.getElementById("grid");
         const predefinedButtons = [{button_list[:-1]}];
@@ -91,29 +93,9 @@ def build_buttons(remote):
             }});
             btn.addEventListener("touchstart", (e) => {{
                 isDragging = false;
-                e.preventDefault();
-                const touch = e.touches[0];
-                const dragEvent = new DragEvent("dragstart", {{
-                    dataTransfer: new DataTransfer(),
-                    bubbles: true,
-                    cancelable: true,
-                    clientX: touch.clientX,
-                    clientY: touch.clientY
-                }});
-                btn.dispatchEvent(dragEvent);
             }});
             btn.addEventListener("touchmove", (e) => {{
                 isDragging = true;
-                e.preventDefault();
-                const touch = e.touches[0];
-                const dragEvent = new DragEvent("drag", {{
-                    dataTransfer: new DataTransfer(),
-                    bubbles: true,
-                    cancelable: true,
-                    clientX: touch.clientX,
-                    clientY: touch.clientY
-                }});
-                btn.dispatchEvent(dragEvent);
             }});
             btn.addEventListener("click", () => {{
                 fetch(`/remotes?remote={remote}&button=${{label}}`)
