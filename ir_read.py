@@ -43,10 +43,9 @@ def read():
     return timestamps[1:]
 
 def calibrate(ir_led):
-    
+    reset()
+    time.sleep_ms(100)
     for i in range(5):
-        reset()
-        time.sleep_ms(100)
         ir_led.duty(512)
         time.sleep_us(500*i)
         ir_led.duty(0)
