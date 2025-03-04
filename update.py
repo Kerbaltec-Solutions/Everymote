@@ -20,6 +20,7 @@ def update(led):
                             led.on()
                             time.sleep_ms(250)
                             led.off()
+                            print("SUCCESS")
                             retrys=0
                     else:
                         retrys-=1
