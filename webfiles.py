@@ -91,21 +91,9 @@ def build_buttons(remote):
                 e.dataTransfer.setData("text", e.target.id);
                 e.dataTransfer.effectAllowed = "move";
             }});
-            btn.addEventListener("touchstart", (e) => {{
-                isDragging = false;
-            }});
-            btn.addEventListener("touchmove", (e) => {{
-                isDragging = true;
-            }});
             btn.addEventListener("click", () => {{
                 fetch(`/remotes?remote={remote}&button=${{label}}`)
             }});
-            btn.addEventListener("touchend", () => {{
-                if (!isDragging) {{
-                    fetch(`/remotes?remote={remote}&button=${{label}}`);
-                }}
-                isDragging = false;
-            }})
             return btn;
         }}
 
