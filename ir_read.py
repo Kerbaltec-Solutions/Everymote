@@ -44,14 +44,19 @@ def read():
     return timestamps[1:]
 
 def calibrate(ir_led):
+    global calib_fac
     reset()
-    send_seq=[random.randint(250,1500) for i in range(10)]
+    send_seq=[random.randint(250,1500) for i in range(20)]
     time.sleep_ms(500)
     send(send_seq,ir_led)
     times = read()
     time_d=[times[i] - send_seq[i] for i in range(len(times))]
-    print(times)
     print(time_d)
+    c_f = int(sum(time_d)/len(time_d))
+    calib_fac -= c_f
+    print(c_f)
+    if(abs(c_f)>10):
+        calibrate()
 
 def send(seq, ir_led):
     seq = [500]+seq
