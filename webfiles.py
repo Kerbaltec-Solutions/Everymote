@@ -120,7 +120,7 @@ def build_buttons(remote):
             }});
             btn.addEventListener("touchend", () => {{
                 if (!isDragging) {{
-                    fetch(`/remotes?remote={remote}&button=${label}`);
+                    fetch(`/remotes?remote={remote}&button=${{label}}`);
                 }}
                 isDragging = false;
             }})

@@ -37,11 +37,13 @@ except:
 
 # Function to handle incoming connections
 def web_page(response,conn,type):
+    led.on()
     conn.send('HTTP/1.1 200 OK\n')
     conn.send(f'Content-Type: {type}\n')
     conn.send('Connection: close\n\n')
     conn.sendall(response)
     conn.close()
+    led.off()
 
 if(WiFi_cred[0] == "" or not wifi.connect(WiFi_cred[0], WiFi_cred[1], 40)):
     # Setup access point
