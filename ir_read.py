@@ -59,7 +59,7 @@ def calibrate(ir_led):
         c_f = int(sum(time_d)/len(time_d))
         calib_fac -= c_f
         print(c_f)
-        if(abs(c_f)>20):
+        if(abs(c_f)>10):
             calibrate(ir_led)
 
 def send(seq, ir_led):
