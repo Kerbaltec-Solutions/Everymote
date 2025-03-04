@@ -25,6 +25,7 @@ hw_buttons.init(led, ir_led)
 
 configure=False
 
+ir_read.calibrate(ir_led)
 
 try:
     with open('WIFI.p', 'r') as rf:
@@ -85,7 +86,6 @@ def answer(conn,request):
         sequences = []
 
         led.on()
-        start = time.ticks_ms()
         nulls=0
         while(nulls<6):
             seq = ir_read.listen()
@@ -141,16 +141,7 @@ def answer(conn,request):
             machine.freq(240000000)
 
             for seq in buttons.get_button(remote,button):
-                led.on()
-                v=512
-                
-                for t in seq:
-                    ir_led.duty(v)
-                    v=-(v-512)
-                    time.sleep_us(t-50)
-                ir_led.duty(0)
-                led.off()
-                time.sleep_ms(500)
+                ir_read.send(seq, ir_led,led)
             
             machine.freq(80000000)
 
