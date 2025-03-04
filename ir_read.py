@@ -56,7 +56,7 @@ def calibrate(ir_led):
     calib_fac -= c_f
     print(c_f)
     if(abs(c_f)>10):
-        calibrate()
+        calibrate(ir_led)
 
 def send(seq, ir_led):
     seq = [500]+seq
