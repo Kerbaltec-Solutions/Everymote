@@ -45,13 +45,13 @@ def read():
 
 def calibrate(ir_led):
     global calib_fac
-    samples=9
+    samples=9 #odd number!
     reset()
     send_seq=[random.randint(250,1500) for i in range(samples)]
     time.sleep_ms(500)
     send(send_seq,ir_led)
     times = read()
-    if(len(times)<samples):
+    if(len(times)!=samples):
         calibrate(ir_led)
     else:
         time_d=[times[i] - send_seq[i] for i in range(len(times))]
