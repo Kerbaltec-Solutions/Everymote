@@ -47,9 +47,9 @@ def calibrate(ir_led):
     time.sleep_ms(100)
     for i in range(5):
         ir_led.duty(512)
-        time.sleep_us(500*i)
+        time.sleep_us(1000*i)
         ir_led.duty(0)
-        time.sleep_us(500*i)
+        time.sleep_us(1000*i)
     times = read()
     print(times)
 
