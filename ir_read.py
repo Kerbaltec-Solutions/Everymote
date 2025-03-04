@@ -61,7 +61,7 @@ def calibrate(ir_led):
             calibrate(ir_led)
 
 def send(seq, ir_led):
-    seq = [500]+seq
+    seq = [100000]+seq
     v=0
 
     for t in seq:
