@@ -88,6 +88,8 @@ def answer(conn,request):
         remote = tools.get_between(request,'remote=','&')
         button = tools.get_between(request,'button=','&')
         sequences = []
+        
+        web_page(webfiles.build_redirect(f'/remotes?page={remote}'),conn,"text/html")
 
         led.on()
         nulls=0
@@ -105,16 +107,14 @@ def answer(conn,request):
         led.off()
 
         buttons.edit_button(remote,button,sequences)
-        
-        web_page(webfiles.build_redirect(f'/remotes?page={remote}'),conn,"text/html")
 
     elif 'GET /buttons/rm' in request:
         remote = tools.get_between(request,'remote=','&')
         button = tools.get_between(request,'button=','&')
 
-        buttons.remove_button(remote,button)
-
         web_page(webfiles.build_redirect(f'/remotes?page={remote}'),conn,"text/html")
+
+        buttons.remove_button(remote,button)
 
     elif 'GET /remotes' in request:
         if 'page=' in request:
@@ -153,8 +153,6 @@ def answer(conn,request):
     else:
         web_page(webfiles.build_remotes(),conn,"text/html")
 
-    print("Ready...")
-
 def accept():
     try:
         conn, addr = s.accept()
@@ -169,5 +167,6 @@ def accept():
         request = tools.replace(request)
 
         answer(conn, request)
+        print("Ready...")
     except:
         pass
