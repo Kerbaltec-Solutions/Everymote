@@ -58,6 +58,8 @@ except:
     machine.reset()
 s.listen(5)
 
+s.settimeout(10)
+
 def answer(conn,request):
     if 'GET /connect' in request:
         ssid = tools.get_between(request,'ssid=','&')
