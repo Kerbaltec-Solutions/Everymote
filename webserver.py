@@ -141,11 +141,11 @@ def answer(conn,request):
             remote = tools.get_between(request,'remote=','&')
 
             web_page(webfiles.build_buttons(remote),conn,"text/html")
-
+            
+            led.on()
             for seq in buttons.get_button(remote,button):
-                led.on()
                 ir_read.send(seq, ir_led)
-                led.off()
+            led.off()
             
     elif(configure):
         web_page(webfiles.wifi_form,conn,"text/html")
