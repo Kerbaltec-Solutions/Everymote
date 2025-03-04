@@ -45,20 +45,17 @@ def read():
 def calibrate(ir_led):
     reset()
     time.sleep_ms(100)
-    for i in range(5):
-        ir_led.duty(512)
-        time.sleep_us(500*i)
-        ir_led.duty(0)
-        time.sleep_us(500*i)
+    send([500]*10,ir_led)
     time.sleep_ms(100)
     times = read()
-    time_d=[times[i] - int(i/2+1)*500 for i in range(len(times))]
+    time_d=[times[i] - 500 for i in range(len(times))]
     print(times)
     print(time_d)
 
 def send(seq, ir_led, led):
+    seq = [500]+seq
     led.on()
-    v=512
+    v=0
     
     for t in seq:
         ir_led.duty(v)
