@@ -61,7 +61,7 @@ def calibrate(ir_led):
             calibrate(ir_led)
 
 def send(seq, ir_led):
-    seq = [100000]+seq
+    seq = [500]+seq
     v=0
 
     for t in seq:
@@ -69,5 +69,4 @@ def send(seq, ir_led):
         v=-(v-512)
         time.sleep_us(t+calib_fac)
     ir_led.duty(0)
-
-    time.sleep_ms(500)
+    time.sleep(1)
