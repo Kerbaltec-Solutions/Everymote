@@ -25,7 +25,9 @@ hw_buttons.init(led, ir_led)
 
 configure=False
 
+led.on()
 ir_read.calibrate(ir_led)
+led.off()
 
 try:
     with open('WIFI.p', 'r') as rf:
