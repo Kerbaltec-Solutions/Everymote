@@ -90,6 +90,7 @@ def build_buttons(remote):
                 e.dataTransfer.effectAllowed = "move";
             }});
             btn.addEventListener("touchstart", (e) => {{
+                isDragging = false;
                 e.preventDefault();
                 const touch = e.touches[0];
                 const dragEvent = new DragEvent("dragstart", {{
@@ -101,9 +102,28 @@ def build_buttons(remote):
                 }});
                 btn.dispatchEvent(dragEvent);
             }});
+            btn.addEventListener("touchmove", (e) => {{
+                isDragging = true;
+                e.preventDefault();
+                const touch = e.touches[0];
+                const dragEvent = new DragEvent("drag", {{
+                    dataTransfer: new DataTransfer(),
+                    bubbles: true,
+                    cancelable: true,
+                    clientX: touch.clientX,
+                    clientY: touch.clientY
+                }});
+                btn.dispatchEvent(dragEvent);
+            }});
             btn.addEventListener("click", () => {{
                 fetch(`/remotes?remote={remote}&button=${{label}}`)
             }});
+            btn.addEventListener("touchend", () => {{
+                if (!isDragging) {{
+                    fetch(`/remotes?remote={remote}&button=${label}`);
+                }}
+                isDragging = false;
+            }})
             return btn;
         }}
 
