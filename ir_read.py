@@ -69,4 +69,4 @@ def send(seq, ir_led):
         v=-(v-512)
         time.sleep_us(t+calib_fac)
     ir_led.duty(0)
-    time.sleep(1)
+    time.sleep_ms(500)
