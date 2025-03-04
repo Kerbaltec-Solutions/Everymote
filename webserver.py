@@ -58,8 +58,6 @@ except:
     machine.reset()
 s.listen(5)
 
-s.settimeout(10)
-
 def answer(conn,request):
     if 'GET /connect' in request:
         ssid = tools.get_between(request,'ssid=','&')
@@ -159,6 +157,7 @@ def accept():
     try:
         conn, addr = s.accept()
         print('Got a connection from %s' % str(addr))
+        conn.settimeout(10)
         request = conn.recv(1024)
         request = str(request)
         
