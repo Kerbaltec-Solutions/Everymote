@@ -51,7 +51,7 @@ def calibrate(ir_led):
         time.sleep_us(500)
     times = read()
     times_e = [500,500,1000,500,1500,500,2000,500,2500,500]
-    times_d=times-times_e
+    times_d=[times[i]-times_e[i] for i in range(len(times))]
     print(times_d)
 
 def send(seq, ir_led, led):
