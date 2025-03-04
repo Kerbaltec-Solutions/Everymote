@@ -1,6 +1,7 @@
 import machine
 from machine import Pin
 import time
+import random
 
 
 pin = Pin(17, Pin.IN)  # Connect IR receiver to GPIO 17
@@ -44,10 +45,11 @@ def read():
 
 def calibrate(ir_led):
     reset()
+    send_seq=[random.randint(250,1500) for i in range(10)]
     time.sleep_ms(500)
-    send([500]*10,ir_led)
+    send(send_seq,ir_led)
     times = read()
-    time_d=[times[i] - 500 for i in range(len(times))]
+    time_d=[times[i] - send_seq[i] for i in range(len(times))]
     print(times)
     print(time_d)
 
