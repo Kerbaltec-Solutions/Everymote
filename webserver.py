@@ -142,20 +142,18 @@ def answer(conn,request):
 
             web_page(webfiles.build_buttons(remote),conn,"text/html")
 
-            machine.freq(240000000)
-
             for seq in buttons.get_button(remote,button):
                 led.on()
                 ir_read.send(seq, ir_led)
                 led.off()
             
-            machine.freq(80000000)
-
     elif(configure):
         web_page(webfiles.wifi_form,conn,"text/html")
 
     else:
         web_page(webfiles.build_remotes(),conn,"text/html")
+
+    print("Ready...")
 
 def accept():
     try:
